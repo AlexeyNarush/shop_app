@@ -48,7 +48,7 @@ class CartSreen extends StatelessWidget {
                 SizedBox(
                   width: 8,
                 ),
-                FlatButton(
+                TextButton(
                   onPressed: () {
                     Provider.of<Orders>(context, listen: false).addOrder(
                       cart.items.values.toList(),
