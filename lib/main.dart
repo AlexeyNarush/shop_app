@@ -9,7 +9,6 @@ import './screens/edit_product_screen.dart';
 import './models/products_provider.dart';
 import './screens/orders_screen.dart';
 import './screens/cart_screen.dart';
-import './models/orders.dart';
 import './models/cart.dart';
 
 void main() => runApp(MyApp());
