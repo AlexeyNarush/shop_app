@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/edit_product_screen.dart';
-import '../models/products_provider.dart';
+import '../providers/products_provider.dart';
 
 class UserProductItem extends StatelessWidget {
   final String id;
@@ -13,6 +13,7 @@ class UserProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scaffold = ScaffoldMessenger.of(context);
     return Container(
       child: Card(
         shadowColor: Theme.of(context).accentColor,
@@ -42,8 +43,21 @@ class UserProductItem extends StatelessWidget {
                   width: 10,
                 ),
                 IconButton(
-                  onPressed: () {
-                    Provider.of<ProductsProvider>(context).deliteProduct(id);
+                  onPressed: () async {
+                    try {
+                      await Provider.of<ProductsProvider>(context,
+                              listen: false)
+                          .deliteProduct(id);
+                    } catch (error) {
+                      scaffold.showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            "Error has ocured!\n Could not delite product.",
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      );
+                    }
                   },
                   icon: Icon(Icons.delete),
                   color: Theme.of(context).errorColor,

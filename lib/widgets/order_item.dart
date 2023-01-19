@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../models/orders.dart' as ord;
+import '../providers/orders.dart' as ord;
 
 class OrderItem extends StatefulWidget {
   final ord.OrderItem order;
@@ -26,7 +26,7 @@ class _OrderItemState extends State<OrderItem> {
           ListTile(
             tileColor: Theme.of(context).primaryColor,
             title: Text(
-              '\$${widget.order.ammount.toStringAsFixed(2)}',
+              '\$${widget.order.amount.toStringAsFixed(2)}',
               style: TextStyle(
                 color: Colors.white,
               ),
